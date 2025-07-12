@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import productRoutes from "./routes/product.routes";
 import contactRoutes from "./routes/contact.routes";
 import cors from "cors";
@@ -9,17 +9,15 @@ const app: Express = express();
 app.use(express.json());
 
 const allowedOrigins = ["http://localhost:5173"];
-
 const corsOptions = {
     origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
-            callback(new Error("Not Allowed by CORS"));
+            callback(new Error("Not allowed by CORS"));
         }
     }
 };
-
 app.use(cors(corsOptions));
 
 // Routes

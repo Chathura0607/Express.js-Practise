@@ -1,7 +1,5 @@
-import {Request, Response} from "express";
-import * as contactService from "../services/contact.services"
-
-//Controller function to handle get all contacts
+import { Request, Response } from "express";
+import * as contactService from "../services/contact.services";
 
 export const getAllContacts = (req: Request, res: Response) => {
     try {
@@ -9,17 +7,17 @@ export const getAllContacts = (req: Request, res: Response) => {
         res.status(200).json(contacts);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "Something went wrong"});
+        res.status(500).json({ message: "Something went wrong" });
     }
-}
+};
 
 export const saveContact = (req: Request, res: Response) => {
     try {
         const newContact = req.body;
-        const validationError = contactService.validateContact(newContact)
+        const validationError = contactService.validateContact(newContact);
 
         if (validationError) {
-            res.status(400).json({error: validationError});
+            res.status(400).json({ error: validationError });
             return;
         }
 
@@ -27,6 +25,6 @@ export const saveContact = (req: Request, res: Response) => {
         res.status(201).json(savedContact);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "Something went wrong"});
+        res.status(500).json({ message: "Something went wrong" });
     }
-}
+};

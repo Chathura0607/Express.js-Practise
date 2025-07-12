@@ -1,10 +1,9 @@
-import {Router} from "express";
-import {getAllContacts, saveContact} from "../controllers/contact.controller";
+import { Router } from "express";
+import { getAllContacts, saveContact } from "../controllers/contact.controller";
 
 const contactRouter: Router = Router();
 
-//Handle Requests
-contactRouter.get("/all", getAllContacts); //Get All
-contactRouter.post("/save", saveContact); //Save
+contactRouter.get("/all", getAllContacts);
+contactRouter.post("/save", saveContact);
 
 export default contactRouter;
