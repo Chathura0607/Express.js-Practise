@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import productRoutes from "./routes/product.routes";
 import contactRoutes from "./routes/contact.routes";
 import cors from "cors";
+import authRoutes from "./routes/auth.routes";
 
 const app: Express = express();
 
@@ -21,6 +22,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/contacts", contactRoutes);
 
