@@ -3,6 +3,7 @@ import productRoutes from "./routes/product.routes";
 import contactRoutes from "./routes/contact.routes";
 import cors from "cors";
 import authRoutes from "./routes/auth.routes";
+import {authenticateToken} from "./middleware/auth.middleware";
 
 const app: Express = express();
 
@@ -23,7 +24,7 @@ app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
+app.use("/api/products", authenticateToken, productRoutes);
 app.use("/api/contacts", contactRoutes);
 
 export default app;
